@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StudentTaskManager.ManageStudentsPage"
+    BackgroundColor="#F4F6FA">
+
+    <Grid BackgroundColor="#F4F6FA">
+
+        <!-- MAIN PAGE CONTENT -->
+        <ScrollView>
+            <VerticalStackLayout Padding="35,30"
+                                 Spacing="15">
+
+                <!-- TITLE -->
+                <Label Text="Manage Students"
+                       FontSize="36"
+                       TextColor="#20344D"/>
+
+                <Label Text="View and manage registered students."
+                       FontSize="16"
+                       TextColor="#64748B"/>
+
+                <!-- SEARCH BAR -->
+                <Grid ColumnDefinitions="*,130"
+                      ColumnSpacing="10"
+                      HorizontalOptions="Center"
+                      WidthRequest="520"
+                      Margin="0,15,0,15">
+
+                    <Border Grid.Column="0"
+                            BackgroundColor="White"
+                            Stroke="#D1D5DB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 6"
+                            Padding="10,0"
+                            HeightRequest="50">
+
+                        <Entry x:Name="searchEntry"
+                               Placeholder="Search students..."
+                               TextColor="#212529"
+                               PlaceholderColor="#888888"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <Button Grid.Column="1"
+                            Text="🔍 Search"
+                            BackgroundColor="#1877ED"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            HeightRequest="50"
+                            CornerRadius="7"
+                            Clicked="Search_Clicked"/>
+                </Grid>
+
+                <!-- STUDENTS TABLE CARD -->
+                <Border BackgroundColor="White"
+                        Stroke="#E5E7EB"
+                        StrokeThickness="1"
+                        Padding="25"
+                        StrokeShape="RoundRectangle 12"
+                        HorizontalOptions="Fill">
+
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,4"
+                                Opacity="0.10"
+                                Radius="10"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="0">
+
+                        <!-- TABLE HEADER -->
+                        <Grid BackgroundColor="#F0F2F4"
+                              Padding="12"
+                              ColumnSpacing="8"
+                              ColumnDefinitions="0.65*,1.15*,1.9*,1.25*,1.1*,1.8*,0.55*,1.0*"
+                              HeightRequest="55">
+
+                            <Label Text="Student ID"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="1"
+                                   Text="Name"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="2"
+                                   Text="Email"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="3"
+                                   Text="Date of Birth"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="4"
+                                   Text="Phone"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="5"
+                                   Text="Department"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="6"
+                                   Text="Year"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   VerticalOptions="Center"/>
+
+                            <Label Grid.Column="7"
+                                   Text="Actions"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="#212529"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1"
+                                 Color="#D1D5DB"/>
+
+                        <!-- STUDENT RECORDS -->
+                        <CollectionView x:Name="studentsCollection"
+                                        SelectionMode="None">
+
+                            <CollectionView.EmptyView>
+                                <VerticalStackLayout Padding="30">
+                                    <Label Text="No students found."
+                                           FontSize="17"
+                                           TextColor="#64748B"
+                                           HorizontalTextAlignment="Center"/>
+                                </VerticalStackLayout>
+                            </CollectionView.EmptyView>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Grid Padding="12"
+                                          ColumnSpacing="8"
+                                          MinimumHeightRequest="65"
+                                          ColumnDefinitions="0.65*,1.15*,1.9*,1.25*,1.1*,1.8*,0.55*,1.0*">
+
+                                        <!-- STUDENT ID -->
+                                        <Label Text="{Binding StudentId}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- NAME -->
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Name}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- EMAIL -->
+                                        <Label Grid.Column="2"
+                                               Text="{Binding Email}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"
+                                               LineBreakMode="TailTruncation"/>
+
+                                        <!-- DATE OF BIRTH -->
+                                        <Label Grid.Column="3"
+                                               Text="{Binding DateOfBirth, StringFormat='{0:dd-MM-yyyy}'}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- PHONE -->
+                                        <Label Grid.Column="4"
+                                               Text="{Binding Phone}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- DEPARTMENT -->
+                                        <Label Grid.Column="5"
+                                               Text="{Binding Department}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"
+                                               LineBreakMode="TailTruncation"/>
+
+                                        <!-- YEAR -->
+                                        <Label Grid.Column="6"
+                                               Text="{Binding Year}"
+                                               FontSize="13"
+                                               TextColor="#1E2B3F"
+                                               VerticalOptions="Center"/>
+
+                                        <!-- ACTION BUTTONS -->
+                                        <HorizontalStackLayout Grid.Column="7"
+                                                               Spacing="8"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center">
+
+                                            <Button Text="✏️"
+                                                    BackgroundColor="#347FF0"
+                                                    TextColor="White"
+                                                    WidthRequest="44"
+                                                    HeightRequest="38"
+                                                    Padding="0"
+                                                    CornerRadius="6"
+                                                    Clicked="EditStudent_Clicked"
+                                                    CommandParameter="{Binding StudentId}"/>
+
+                                            <Button Text="🗑"
+                                                    BackgroundColor="#DC3545"
+                                                    TextColor="White"
+                                                    WidthRequest="44"
+                                                    HeightRequest="38"
+                                                    Padding="0"
+                                                    CornerRadius="6"
+                                                    Clicked="DeleteStudent_Clicked"
+                                                    CommandParameter="{Binding StudentId}"/>
+
+                                        </HorizontalStackLayout>
+
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- CUSTOM DELETE CONFIRMATION POPUP -->
+        <Grid x:Name="DeleteConfirmOverlay"
+              IsVisible="False"
+              BackgroundColor="#80000000"
+              ZIndex="10">
+
+            <Border WidthRequest="440"
+                    Padding="20"
+                    BackgroundColor="#202020"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 12"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label Text="Confirm Delete"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Label Text="Are you sure you want to delete this student?"
+                           FontSize="14"
+                           TextColor="White"/>
+
+                    <HorizontalStackLayout Spacing="10"
+                                           HorizontalOptions="End">
+
+                        <Button Text="OK"
+                                WidthRequest="75"
+                                HeightRequest="40"
+                                BackgroundColor="#347FF0"
+                                TextColor="White"
+                                CornerRadius="7"
+                                Clicked="ConfirmDelete_Clicked"/>
+
+                        <Button Text="Cancel"
+                                WidthRequest="85"
+                                HeightRequest="40"
+                                BackgroundColor="#454545"
+                                TextColor="White"
+                                CornerRadius="7"
+                                Clicked="CancelDelete_Clicked"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</ContentView>

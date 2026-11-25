@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StudentTaskManager"
+    x:Class="StudentTaskManager.AdminDashboardPage">
+
+    <!-- MAIN GRID -->
+    <Grid RowDefinitions="65,*"
+          ColumnDefinitions="250,*">
+
+        <!-- TOP NAVIGATION BAR -->
+        <views:AppHeader
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HeightRequest="65"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
+
+        <!-- LEFT ADMIN SIDEBAR -->
+        <ScrollView Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="#1E2B3F">
+
+            <VerticalStackLayout Padding="16,25"
+                                 Spacing="15">
+
+                <Label Text="Admin Panel"
+                       FontSize="27"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,0,0,15"/>
+
+                <!-- DASHBOARD -->
+                <Grid x:Name="DashboardButton"
+                      HeightRequest="58"
+                      BackgroundColor="#347FF0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="🏠"
+                           Grid.Column="0"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Dashboard"
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Dashboard_Clicked"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!-- MANAGE STUDENTS -->
+                <Grid x:Name="StudentsButton"
+                      HeightRequest="52"
+                      BackgroundColor="Transparent">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="👨‍🎓"
+                           Grid.Column="0"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Manage Students"
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ManageStudents_Clicked"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!-- MANAGE COURSES -->
+                <Grid x:Name="CoursesButton"
+                      HeightRequest="52"
+                      BackgroundColor="Transparent">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="📚"
+                           Grid.Column="0"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Manage Courses"
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ManageCourses_Clicked"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!-- ENROLLMENTS -->
+                <Grid x:Name="EnrollmentsButton"
+                      HeightRequest="52"
+                      BackgroundColor="Transparent">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="📝"
+                           Grid.Column="0"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Enrollments"
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Enrollments_Clicked"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!-- LOGOUT -->
+                <Grid HeightRequest="52"
+                      BackgroundColor="Transparent">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="🚪"
+                           Grid.Column="0"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="Logout"
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logout_Clicked"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- RIGHT SIDE CONTENT -->
+        <ContentView x:Name="mainContentArea"
+                     Grid.Row="1"
+                     Grid.Column="1">
+
+            <!-- DASHBOARD CONTENT -->
+            <ScrollView>
+
+                <VerticalStackLayout Padding="35,40"
+                                     Spacing="15">
+
+                    <Label Text="Admin Dashboard"
+                           FontSize="40"
+                           TextColor="#20344D"/>
+
+                    <Label Text="Welcome to the Student Course Management System."
+                           FontSize="16"
+                           TextColor="#64748B"/>
+
+                    <!-- DASHBOARD CARDS -->
+                    <FlexLayout Direction="Row"
+                                Wrap="Wrap"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                Margin="0,15,0,0">
+
+                        <!-- TOTAL STUDENTS -->
+                        <Border BackgroundColor="#20C55A"
+                                StrokeThickness="0"
+                                WidthRequest="220"
+                                HeightRequest="190"
+                                Padding="25"
+                                Margin="0,0,20,15"
+                                StrokeShape="RoundRectangle 12">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TotalStudentsCard_Clicked"/>
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="18">
+
+                                <Label Text="Total Students"
+                                       FontSize="22"
+                                       TextColor="#111827"/>
+
+                                <Label x:Name="totalStudentsLabel"
+                                       Text="0"
+                                       FontSize="34"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- TOTAL COURSES -->
+                        <Border BackgroundColor="#FFCA16"
+                                StrokeThickness="0"
+                                WidthRequest="220"
+                                HeightRequest="190"
+                                Padding="25"
+                                Margin="0,0,20,15"
+                                StrokeShape="RoundRectangle 12">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TotalCoursesCard_Clicked"/>
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="18">
+
+                                <Label Text="Total Courses"
+                                       FontSize="22"
+                                       TextColor="#111827"/>
+
+                                <Label x:Name="totalCoursesLabel"
+                                       Text="0"
+                                       FontSize="34"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- TOTAL ENROLLMENTS -->
+                        <Border BackgroundColor="#EF4444"
+                                StrokeThickness="0"
+                                WidthRequest="220"
+                                HeightRequest="190"
+                                Padding="25"
+                                Margin="0,0,20,15"
+                                StrokeShape="RoundRectangle 12">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TotalEnrollmentsCard_Clicked"/>
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="18">
+
+                                <Label Text="Total Enrollments"
+                                       FontSize="22"
+                                       TextColor="#111827"/>
+
+                                <Label x:Name="totalEnrollmentsLabel"
+                                       Text="0"
+                                       FontSize="34"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </FlexLayout>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </ContentView>
+
+    </Grid>
+
+</ContentPage>

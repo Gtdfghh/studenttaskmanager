@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StudentTaskManager.AvailableCoursesPage"
+    BackgroundColor="#F4F6FA">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="55,40"
+            Spacing="15">
+
+            <!-- PAGE TITLE -->
+            <Label
+                Text="Available Courses"
+                FontSize="40"
+                TextColor="#20344D"/>
+
+            <Label
+                Text="Browse and enroll in available courses."
+                FontSize="16"
+                TextColor="#555555"/>
+
+            <!-- CENTRED SEARCH BAR -->
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10"
+                Margin="0,15,0,15">
+
+                <Entry
+                    x:Name="searchEntry"
+                    Placeholder="Search courses..."
+                    WidthRequest="365"
+                    HeightRequest="52"
+                    BackgroundColor="White"
+                    TextColor="#212529"
+                    PlaceholderColor="#888888"
+                    VerticalOptions="Center"/>
+
+                <Button
+                    Text="🔍 Search"
+                    BackgroundColor="#347FF0"
+                    TextColor="White"
+                    WidthRequest="130"
+                    HeightRequest="52"
+                    CornerRadius="7"
+                    Clicked="Search_Clicked"/>
+
+            </HorizontalStackLayout>
+
+            <!-- ENROLLMENT MESSAGE -->
+            <Border
+                x:Name="enrollmentMessageBorder"
+                BackgroundColor="#D1FAE5"
+                Stroke="#86EFAC"
+                StrokeThickness="1"
+                Padding="18"
+                Margin="0,10,0,10"
+                StrokeShape="RoundRectangle 6"
+                IsVisible="False">
+
+                <Label
+                    x:Name="enrollmentMessageLabel"
+                    FontSize="15"
+                    TextColor="#166534"/>
+
+            </Border>
+
+            <!-- COURSE CARDS -->
+            <FlexLayout
+                x:Name="coursesContainer"
+                Direction="Row"
+                Wrap="Wrap"
+                JustifyContent="Start"
+                AlignItems="Start"
+                AlignContent="Start"
+                Margin="0,10,0,0"/>
+
+            <!-- EMPTY STATE -->
+            <Border
+                x:Name="emptyStateBorder"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1"
+                Padding="30"
+                IsVisible="False">
+
+                <VerticalStackLayout
+                    Spacing="15"
+                    HorizontalOptions="Center">
+
+                    <Label
+                        Text="📚"
+                        FontSize="55"
+                        HorizontalTextAlignment="Center"/>
+
+                    <Label
+                        Text="No Courses Found"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="#1E2B3F"
+                        HorizontalTextAlignment="Center"/>
+
+                    <Label
+                        Text="There are currently no courses available."
+                        FontSize="14"
+                        TextColor="#64748B"
+                        HorizontalTextAlignment="Center"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentView>

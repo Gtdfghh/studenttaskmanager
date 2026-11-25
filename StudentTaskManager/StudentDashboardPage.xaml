@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="StudentTaskManager.StudentDashboardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StudentTaskManager">
+
+    <Grid RowDefinitions="65,*"
+          ColumnDefinitions="250,*">
+
+        <!-- TOP NAVIGATION BAR -->
+        <views:AppHeader
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HeightRequest="65"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
+
+        <!-- LEFT SIDEBAR -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="0"
+            BackgroundColor="#1E2B3F"
+            Padding="16,25"
+            Spacing="15">
+
+            <!-- STUDENT PANEL TITLE -->
+            <Label
+                Text="Student Panel"
+                FontSize="27"
+                TextColor="White"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,15"/>
+
+            <!-- DASHBOARD -->
+            <Grid
+                x:Name="DashboardButton"
+                HeightRequest="58"
+                BackgroundColor="#347FF0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="🏠"
+                    Grid.Column="0"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="Dashboard"
+                    Grid.Column="1"
+                    FontSize="16"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="Dashboard_Clicked"/>
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+            <!-- MY PROFILE -->
+            <Grid
+                x:Name="ProfileButton"
+                HeightRequest="52"
+                BackgroundColor="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="👤"
+                    Grid.Column="0"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="My Profile"
+                    Grid.Column="1"
+                    FontSize="16"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="MyProfile_Clicked"/>
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+            <!-- AVAILABLE COURSES -->
+            <Grid
+                x:Name="CoursesButton"
+                HeightRequest="52"
+                BackgroundColor="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="📚"
+                    Grid.Column="0"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="Available Courses"
+                    Grid.Column="1"
+                    FontSize="16"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="AvailableCourses_Clicked"/>
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+            <!-- MY ENROLLMENTS -->
+            <Grid
+                x:Name="EnrollmentsButton"
+                HeightRequest="52"
+                BackgroundColor="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="📝"
+                    Grid.Column="0"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="My Enrollments"
+                    Grid.Column="1"
+                    FontSize="16"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="MyEnrollments_Clicked"/>
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+            <!-- LOGOUT -->
+            <Grid
+                x:Name="LogoutButton"
+                HeightRequest="52"
+                BackgroundColor="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="🚪"
+                    Grid.Column="0"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="Logout"
+                    Grid.Column="1"
+                    FontSize="16"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="Logout_Clicked"/>
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <!-- RIGHT SIDE CONTENT -->
+        <ContentView
+            x:Name="mainContentArea"
+            Grid.Row="1"
+            Grid.Column="1">
+
+            <!-- DASHBOARD HOME CONTENT -->
+            <ContentView x:Name="dashboardContent">
+
+                <ScrollView>
+
+                    <VerticalStackLayout
+                        Padding="55,40"
+                        Spacing="15">
+
+                        <!-- DASHBOARD TITLE -->
+                        <Label
+                            Text="Student Dashboard"
+                            FontSize="40"
+                            TextColor="#20344D"/>
+
+                        <Label
+                            Text="Welcome to the Student Course Management System."
+                            FontSize="16"
+                            TextColor="#555555"/>
+
+                        <!-- DASHBOARD CARDS -->
+                        <HorizontalStackLayout
+                            Spacing="20"
+                            Margin="0,15,0,0">
+
+                            <!-- AVAILABLE COURSES CARD -->
+                            <Border
+                                BackgroundColor="#20C45A"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                WidthRequest="237"
+                                HeightRequest="205"
+                                Padding="25">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="AvailableCourses_Clicked"/>
+                                </Border.GestureRecognizers>
+
+                                <VerticalStackLayout Spacing="15">
+
+                                    <Label
+                                        Text="Available Courses"
+                                        FontSize="22"
+                                        TextColor="#172B35"/>
+
+                                    <Label
+                                        x:Name="totalCoursesLabel"
+                                        Text="0"
+                                        FontSize="32"
+                                        TextColor="#172B35"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                            <!-- MY ENROLLMENTS CARD -->
+                            <Border
+                                BackgroundColor="#F13F43"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                WidthRequest="237"
+                                HeightRequest="205"
+                                Padding="25">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="MyEnrollments_Clicked"/>
+                                </Border.GestureRecognizers>
+
+                                <VerticalStackLayout Spacing="15">
+
+                                    <Label
+                                        Text="My Enrollments"
+                                        FontSize="22"
+                                        TextColor="#172B35"/>
+
+                                    <Label
+                                        x:Name="myEnrollmentsLabel"
+                                        Text="0"
+                                        FontSize="32"
+                                        TextColor="#172B35"/>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </ScrollView>
+
+            </ContentView>
+
+        </ContentView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,125 @@
+<ContentView
+    x:Class="StudentTaskManager.EditCoursePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="40,30"
+                             Spacing="12">
+
+            <Label Text="Edit Course"
+                   FontSize="40"
+                   TextColor="#1E2B3F"/>
+
+            <Label Text="Update the course information."
+                   FontSize="16"
+                   TextColor="#64748B"/>
+
+            <Border BackgroundColor="White"
+                    Stroke="#E0E4EA"
+                    StrokeThickness="1"
+                    Padding="30"
+                    Margin="0,18,0,0"
+                    HorizontalOptions="Start"
+                    WidthRequest="700">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12"/>
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <!-- COURSE NAME -->
+                    <Label Text="Course Name"
+                           TextColor="#526078"/>
+
+                    <Border Stroke="#CCCCCC"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            Padding="10,0"
+                            HeightRequest="48">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6"/>
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="courseNameEntry"
+                               Placeholder="Enter course name"
+                               BackgroundColor="Transparent"
+                               TextColor="#212529"
+                               PlaceholderColor="#888888"
+                               HeightRequest="46"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- DESCRIPTION -->
+                    <Label Text="Description"
+                           TextColor="#526078"
+                           Margin="0,8,0,0"/>
+
+                    <Border Stroke="#CCCCCC"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            Padding="10,5"
+                            HeightRequest="95">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6"/>
+                        </Border.StrokeShape>
+
+                        <Editor x:Name="descriptionEditor"
+                                Placeholder="Enter course description"
+                                BackgroundColor="Transparent"
+                                TextColor="#212529"
+                                PlaceholderColor="#888888"
+                                AutoSize="Disabled"
+                                HeightRequest="85"/>
+                    </Border>
+
+                    <!-- DURATION -->
+                    <Label Text="Duration"
+                           TextColor="#526078"
+                           Margin="0,8,0,0"/>
+
+                    <Border Stroke="#CCCCCC"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            Padding="10,0"
+                            HeightRequest="48">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6"/>
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="durationEntry"
+                               Placeholder="Enter course duration"
+                               BackgroundColor="Transparent"
+                               TextColor="#212529"
+                               PlaceholderColor="#888888"
+                               HeightRequest="46"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- BUTTONS -->
+                    <HorizontalStackLayout Spacing="12"
+                                           Margin="0,15,0,0">
+
+                        <Button Text="Save Changes"
+                                BackgroundColor="#347FF0"
+                                TextColor="White"
+                                Clicked="SaveChanges_Clicked"/>
+
+                        <Button Text="Cancel"
+                                BackgroundColor="White"
+                                TextColor="#212529"
+                                BorderColor="#CCCCCC"
+                                BorderWidth="1"
+                                Clicked="Cancel_Clicked"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

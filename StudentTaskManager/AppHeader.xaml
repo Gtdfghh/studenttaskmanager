@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StudentTaskManager.AppHeader">
+
+    <Grid
+        BackgroundColor="White"
+        Padding="25,12"
+        ColumnDefinitions="*,Auto">
+
+        <!-- LOGO AND TITLE -->
+        <HorizontalStackLayout
+            Spacing="8"
+            VerticalOptions="Center">
+
+            <Label
+                Text="🎓"
+                FontSize="22"
+                VerticalOptions="Center"/>
+
+            <Label
+                Text="Student Course Management"
+                FontSize="19"
+                FontAttributes="Bold"
+                TextColor="#212529"
+                VerticalOptions="Center"/>
+
+        </HorizontalStackLayout>
+
+        <!-- NAVIGATION BUTTONS -->
+        <HorizontalStackLayout
+            Grid.Column="1"
+            Spacing="8"
+            VerticalOptions="Center">
+
+            <Button
+                x:Name="homeButton"
+                Text="Home"
+                BackgroundColor="Transparent"
+                TextColor="#333333"
+                FontSize="14"
+                Clicked="Home_Clicked">
+
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer
+                        PointerEntered="Home_PointerEntered"
+                        PointerExited="Home_PointerExited"/>
+                </Button.GestureRecognizers>
+
+            </Button>
+
+            <Button
+                x:Name="loginButton"
+                Text="Login"
+                BackgroundColor="Transparent"
+                TextColor="#333333"
+                FontSize="14"
+                Clicked="Login_Clicked">
+
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer
+                        PointerEntered="Login_PointerEntered"
+                        PointerExited="Login_PointerExited"/>
+                </Button.GestureRecognizers>
+
+            </Button>
+
+            <Button
+                x:Name="registerButton"
+                Text="Register"
+                BackgroundColor="Transparent"
+                TextColor="#333333"
+                FontSize="14"
+                Clicked="Register_Clicked">
+
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer
+                        PointerEntered="Register_PointerEntered"
+                        PointerExited="Register_PointerExited"/>
+                </Button.GestureRecognizers>
+
+            </Button>
+
+        </HorizontalStackLayout>
+
+    </Grid>
+
+</ContentView>

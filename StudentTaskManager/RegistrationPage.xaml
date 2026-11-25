@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StudentTaskManager.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StudentTaskManager"
+    Title="Register"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F4F6FA">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <views:AppHeader />
+
+            <!-- REGISTRATION SECTION -->
+            <Grid
+                Padding="25,45"
+                MinimumHeightRequest="680">
+
+                <Border
+                    BackgroundColor="White"
+                    StrokeThickness="0"
+                    Padding="40"
+                    StrokeShape="RoundRectangle 18"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="525">
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#000000"
+                            Offset="0,10"
+                            Radius="25"
+                            Opacity="0.15"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="17">
+
+                        <!-- REGISTRATION ICON -->
+                        <Border
+                            BackgroundColor="#E8F0FF"
+                            WidthRequest="65"
+                            HeightRequest="65"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 40"
+                            HorizontalOptions="Center">
+
+                            <Label
+                                Text="👤"
+                                FontSize="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
+
+                        </Border>
+
+                        <!-- HEADING -->
+                        <Label
+                            Text="Create Account"
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            TextColor="#212529"
+                            HorizontalOptions="Center"/>
+
+                        <Label
+                            Text="Register to access the Student Course Management System."
+                            FontSize="15"
+                            TextColor="#667085"
+                            HorizontalTextAlignment="Center"/>
+
+                        <!-- GENERAL ERROR -->
+                        <Label
+                            x:Name="registerErrorLabel"
+                            Text=""
+                            FontSize="13"
+                            TextColor="#DC3545"
+                            IsVisible="False"/>
+
+                        <!-- EMAIL -->
+                        <VerticalStackLayout Spacing="7">
+
+                            <Label
+                                Text="Email"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="#212529"/>
+
+                            <Border
+                                x:Name="emailBorder"
+                                Stroke="#CED4DA"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 9"
+                                Padding="10,0"
+                                HeightRequest="52">
+
+                                <Entry
+                                    x:Name="emailEntry"
+                                    Placeholder="Enter your Email"
+                                    PlaceholderColor="#667085"
+                                    TextColor="#212529"
+                                    BackgroundColor="Transparent"
+                                    Keyboard="Email"
+                                    VerticalOptions="Center"
+                                    TextChanged="Email_TextChanged"
+                                    Focused="Email_Focused"
+                                    Unfocused="Email_Unfocused"/>
+
+                            </Border>
+
+                            <Label
+                                x:Name="emailErrorLabel"
+                                Text=""
+                                FontSize="12"
+                                TextColor="#DC3545"
+                                IsVisible="False"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PASSWORD -->
+                        <VerticalStackLayout Spacing="7">
+
+                            <Label
+                                Text="Password"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="#212529"/>
+
+                            <Border
+                                x:Name="passwordBorder"
+                                Stroke="#CED4DA"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 9"
+                                Padding="10,0"
+                                HeightRequest="52">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <Entry
+                                        x:Name="passwordEntry"
+                                        Placeholder="Enter your password"
+                                        PlaceholderColor="#667085"
+                                        TextColor="#212529"
+                                        BackgroundColor="Transparent"
+                                        IsPassword="True"
+                                        VerticalOptions="Center"
+                                        TextChanged="Password_TextChanged"
+                                        Focused="Password_Focused"
+                                        Unfocused="Password_Unfocused"/>
+
+                                    <Button
+                                        x:Name="passwordToggleButton"
+                                        Grid.Column="1"
+                                        Text="⊘"
+                                        FontSize="17"
+                                        TextColor="#667085"
+                                        BackgroundColor="Transparent"
+                                        Padding="8,0"
+                                        Clicked="TogglePasswordVisibility"/>
+
+                                </Grid>
+                            </Border>
+
+                            <Label
+                                x:Name="passwordErrorLabel"
+                                Text=""
+                                FontSize="12"
+                                TextColor="#DC3545"
+                                IsVisible="False"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <VerticalStackLayout Spacing="7">
+
+                            <Label
+                                Text="Confirm Password"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="#212529"/>
+
+                            <Border
+                                x:Name="confirmPasswordBorder"
+                                Stroke="#CED4DA"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 9"
+                                Padding="10,0"
+                                HeightRequest="52">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <Entry
+                                        x:Name="confirmPasswordEntry"
+                                        Placeholder="Enter your confirm password"
+                                        PlaceholderColor="#667085"
+                                        TextColor="#212529"
+                                        BackgroundColor="Transparent"
+                                        IsPassword="True"
+                                        VerticalOptions="Center"
+                                        TextChanged="ConfirmPassword_TextChanged"
+                                        Focused="ConfirmPassword_Focused"
+                                        Unfocused="ConfirmPassword_Unfocused"/>
+
+                                    <Button
+                                        x:Name="confirmPasswordToggleButton"
+                                        Grid.Column="1"
+                                        Text="⊘"
+                                        FontSize="17"
+                                        TextColor="#667085"
+                                        BackgroundColor="Transparent"
+                                        Padding="8,0"
+                                        Clicked="ToggleConfirmPasswordVisibility"/>
+
+                                </Grid>
+                            </Border>
+
+                            <Label
+                                x:Name="confirmPasswordErrorLabel"
+                                Text=""
+                                FontSize="12"
+                                TextColor="#DC3545"
+                                IsVisible="False"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- CREATE ACCOUNT BUTTON -->
+                        <Button
+                            x:Name="registerButton"
+                            Text="＋  Create Account"
+                            BackgroundColor="#0D6EFD"
+                            TextColor="White"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            HeightRequest="52"
+                            CornerRadius="9"
+                            Margin="0,5,0,0"
+                            Clicked="Register_Clicked"/>
+
+                        <!-- LOGIN LINK -->
+                        <HorizontalStackLayout
+                            HorizontalOptions="Center"
+                            Spacing="5"
+                            Margin="0,5,0,0">
+
+                            <Label
+                                Text="Already have an account?"
+                                FontSize="14"
+                                TextColor="#667085"
+                                VerticalOptions="Center"/>
+
+                            <Button
+                                Text="Login"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#0D6EFD"
+                                BackgroundColor="Transparent"
+                                Padding="0"
+                                Clicked="Login_Clicked"/>
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- FOOTER -->
+            <Grid
+                BackgroundColor="White"
+                Padding="12">
+
+                <BoxView
+                    HeightRequest="1"
+                    Color="#DDE2E8"
+                    VerticalOptions="Start"/>
+
+                <Label
+                    Text="© 2026 Student Course Management System"
+                    FontSize="14"
+                    TextColor="#667085"
+                    HorizontalOptions="Center"
+                    Margin="0,7,0,0"/>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

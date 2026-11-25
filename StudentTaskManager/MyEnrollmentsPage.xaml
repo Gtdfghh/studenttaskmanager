@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StudentTaskManager.MyEnrollmentsPage"
+    BackgroundColor="#F4F6FA">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="55,40"
+            Spacing="15">
+
+            <!-- PAGE TITLE -->
+            <Label
+                Text="My Enrollments"
+                FontSize="40"
+                TextColor="#20344D"/>
+
+            <Label
+                Text="View the courses you have enrolled in."
+                FontSize="16"
+                TextColor="#555555"/>
+
+            <!-- SEARCH BAR -->
+            <Grid
+                ColumnDefinitions="365,130"
+                ColumnSpacing="10"
+                HorizontalOptions="Center"
+                Margin="0,15,0,20">
+
+                <Entry
+                    x:Name="searchEntry"
+                    Grid.Column="0"
+                    Placeholder="Search enrollments..."
+                    BackgroundColor="White"
+                    TextColor="#212529"
+                    PlaceholderColor="#888888"
+                    HeightRequest="50"/>
+
+                <Button
+                    Grid.Column="1"
+                    Text="🔍 Search"
+                    BackgroundColor="#347FF0"
+                    TextColor="White"
+                    HeightRequest="50"
+                    CornerRadius="7"
+                    Clicked="Search_Clicked"/>
+
+            </Grid>
+
+            <!-- ENROLLMENT CARDS -->
+            <FlexLayout
+                x:Name="enrollmentsContainer"
+                Direction="Row"
+                Wrap="Wrap"
+                JustifyContent="Start"
+                AlignItems="Start"
+                AlignContent="Start"
+                Margin="0,10,0,0"/>
+
+            <!-- EMPTY STATE -->
+            <Border
+                x:Name="emptyState"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1"
+                Padding="30"
+                IsVisible="False">
+
+                <VerticalStackLayout
+                    Spacing="12"
+                    HorizontalOptions="Center">
+
+                    <Label
+                        Text="📝"
+                        FontSize="50"
+                        HorizontalTextAlignment="Center"/>
+
+                    <Label
+                        Text="No Enrollments Found"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="#1E2B3F"
+                        HorizontalTextAlignment="Center"/>
+
+                    <Label
+                        Text="You have not enrolled in any courses yet."
+                        FontSize="14"
+                        TextColor="#64748B"
+                        HorizontalTextAlignment="Center"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentView>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    x:Class="StudentTaskManager.ManageCoursePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FA">
+
+    <Grid BackgroundColor="#F4F6FA">
+
+        <!-- COURSE LIST -->
+        <ScrollView x:Name="courseListView">
+
+            <VerticalStackLayout Padding="35,30"
+                                 Spacing="12">
+
+                <!-- TITLE -->
+                <Label Text="Manage Courses"
+                       FontSize="40"
+                       TextColor="#1E2B3F"/>
+
+                <Label Text="View and manage available courses."
+                       FontSize="16"
+                       TextColor="#64748B"/>
+
+                <!-- ADD COURSE AND SEARCH -->
+                <Grid ColumnDefinitions="Auto,*,Auto"
+                      ColumnSpacing="10"
+                      Margin="0,12,0,15">
+
+                    <Button Grid.Column="0"
+                            Text="+ Add Course"
+                            BackgroundColor="#198754"
+                            TextColor="White"
+                            Clicked="AddCourse_Clicked"
+                            VerticalOptions="Center"/>
+
+                    <Entry Grid.Column="1"
+                           x:Name="searchEntry"
+                           Placeholder="Search courses..."
+                           HeightRequest="48"
+                           BackgroundColor="White"
+                           TextColor="#212529"
+                           PlaceholderColor="#777777"
+                           VerticalOptions="Center"/>
+
+                    <Button Grid.Column="2"
+                            Text="🔍 Search"
+                            BackgroundColor="#0D6EFD"
+                            TextColor="White"
+                            Clicked="Search_Clicked"
+                            VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- COURSE TABLE CARD -->
+                <Border BackgroundColor="White"
+                        Padding="20"
+                        Stroke="#E0E4EA"
+                        StrokeThickness="1">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12"/>
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="0">
+
+                        <!-- TABLE HEADINGS -->
+                        <Grid BackgroundColor="#F0F2F4"
+                              Padding="15"
+                              ColumnDefinitions="1*,1.5*,3*,1*,1.5*">
+
+                            <Label Text="Course ID"
+                                   FontAttributes="Bold"
+                                   TextColor="#212529"/>
+
+                            <Label Grid.Column="1"
+                                   Text="Course Name"
+                                   FontAttributes="Bold"
+                                   TextColor="#212529"/>
+
+                            <Label Grid.Column="2"
+                                   Text="Description"
+                                   FontAttributes="Bold"
+                                   TextColor="#212529"/>
+
+                            <Label Grid.Column="3"
+                                   Text="Duration"
+                                   FontAttributes="Bold"
+                                   TextColor="#212529"/>
+
+                            <Label Grid.Column="4"
+                                   Text="Actions"
+                                   FontAttributes="Bold"
+                                   TextColor="#212529"
+                                   HorizontalTextAlignment="Center"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1"
+                                 Color="#D9DDE2"/>
+
+                        <!-- COURSE RECORDS -->
+                        <VerticalStackLayout x:Name="coursesContainer"
+                                             Spacing="0"/>
+
+                        <Label x:Name="noCoursesLabel"
+                               Text="No courses found. Admin can add courses."
+                               TextColor="#64748B"
+                               FontSize="15"
+                               HorizontalTextAlignment="Center"
+                               Padding="20"
+                               IsVisible="False"/>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- ADD OR EDIT COURSE FORM AREA -->
+        <ContentView x:Name="courseFormArea"
+                     IsVisible="False"
+                     BackgroundColor="#F4F6FA"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
+
+        <!-- DELETE CONFIRMATION POPUP -->
+        <Grid x:Name="DeleteConfirmOverlay"
+              IsVisible="False"
+              BackgroundColor="#80000000"
+              ZIndex="10">
+
+            <Border WidthRequest="440"
+                    Padding="20"
+                    BackgroundColor="#202020"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 12"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label Text="Confirm Delete"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+
+                    <Label Text="Are you sure you want to delete this course?"
+                           FontSize="14"
+                           TextColor="White"/>
+
+                    <HorizontalStackLayout Spacing="10"
+                                           HorizontalOptions="End">
+
+                        <Button Text="OK"
+                                WidthRequest="75"
+                                HeightRequest="40"
+                                BackgroundColor="#347FF0"
+                                TextColor="White"
+                                CornerRadius="7"
+                                Clicked="ConfirmDelete_Clicked"/>
+
+                        <Button Text="Cancel"
+                                WidthRequest="85"
+                                HeightRequest="40"
+                                BackgroundColor="#454545"
+                                TextColor="White"
+                                CornerRadius="7"
+                                Clicked="CancelDelete_Clicked"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</ContentView>

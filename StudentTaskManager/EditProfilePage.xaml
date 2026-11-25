@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    x:Class="StudentTaskManager.EditProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FA">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="40,30"
+            Spacing="15">
+
+            <Label
+                Text="Edit Profile"
+                FontSize="40"
+                TextColor="#20344D"/>
+
+            <Label
+                Text="Update your personal and academic information."
+                FontSize="16"
+                TextColor="#555555"/>
+
+            <!-- FORM CARD -->
+            <Border
+                BackgroundColor="White"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 12"
+                Padding="35"
+                Margin="0,15,0,20">
+
+                <VerticalStackLayout Spacing="22">
+
+                    <!-- NAME AND DATE OF BIRTH -->
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="20">
+
+                        <!-- FULL NAME -->
+                        <VerticalStackLayout Spacing="8">
+
+                            <Label
+                                Text="Full Name"
+                                TextColor="#555555"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#AAB2BD"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 6"
+                                HeightRequest="48"
+                                Padding="10,0">
+
+                                <Entry
+                                    x:Name="nameEntry"
+                                    Placeholder="Enter full name"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#212529"
+                                    PlaceholderColor="#999999"
+                                    HeightRequest="46"
+                                    VerticalOptions="Center"/>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                        <!-- DATE OF BIRTH -->
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="8">
+
+                            <Label
+                                Text="Date of Birth"
+                                TextColor="#555555"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#AAB2BD"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 6"
+                                HeightRequest="48"
+                                Padding="10,0">
+
+                                <DatePicker
+                                    x:Name="dateOfBirthPicker"
+                                    Format="dd-MM-yyyy"
+                                    TextColor="#212529"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="46"
+                                    VerticalOptions="Center"/>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <!-- PHONE AND DEPARTMENT -->
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="20">
+
+                        <!-- PHONE -->
+                        <VerticalStackLayout Spacing="8">
+
+                            <Label
+                                Text="Phone"
+                                TextColor="#555555"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#AAB2BD"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 6"
+                                HeightRequest="48"
+                                Padding="10,0">
+
+                                <Entry
+                                    x:Name="phoneEntry"
+                                    Placeholder="Enter phone number"
+                                    Keyboard="Telephone"
+                                    MaxLength="10"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#212529"
+                                    PlaceholderColor="#999999"
+                                    HeightRequest="46"
+                                    VerticalOptions="Center"/>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                        <!-- DEPARTMENT -->
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="8">
+
+                            <Label
+                                Text="Department"
+                                TextColor="#555555"/>
+
+                            <Grid HeightRequest="48">
+
+                                <Border
+                                    BackgroundColor="White"
+                                    Stroke="#AAB2BD"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 6"
+                                    Padding="12,0">
+
+                                    <Label
+                                        x:Name="editDepartmentSelectedLabel"
+                                        Text="Select Department"
+                                        FontSize="14"
+                                        TextColor="#212529"
+                                        VerticalOptions="Center"
+                                        LineBreakMode="TailTruncation"/>
+
+                                </Border>
+
+                                <Picker
+                                    x:Name="departmentPicker"
+                                    Opacity="0"
+                                    BackgroundColor="White"
+                                    TextColor="#212529"
+                                    Title="Select Department"
+                                    SelectedIndexChanged="DepartmentPicker_SelectedIndexChanged"/>
+
+                            </Grid>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <!-- YEAR -->
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label
+                            Text="Year"
+                            TextColor="#555555"/>
+
+                        <Grid
+                            WidthRequest="300"
+                            HeightRequest="48"
+                            HorizontalOptions="Start">
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#AAB2BD"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="12,0">
+
+                                <Label
+                                    x:Name="editYearSelectedLabel"
+                                    Text="Select Year"
+                                    FontSize="14"
+                                    TextColor="#212529"
+                                    VerticalOptions="Center"/>
+
+                            </Border>
+
+                            <Picker
+                                x:Name="yearPicker"
+                                Opacity="0"
+                                BackgroundColor="White"
+                                TextColor="#212529"
+                                Title="Select Year"
+                                SelectedIndexChanged="YearPicker_SelectedIndexChanged"/>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                    <!-- BUTTONS -->
+                    <HorizontalStackLayout
+                        Spacing="15"
+                        Margin="0,15,0,0">
+
+                        <Button
+                            Text="💾 Save Changes"
+                            BackgroundColor="#347FF0"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="6"
+                            HeightRequest="48"
+                            Clicked="SaveChanges_Clicked"/>
+
+                        <Button
+                            Text="Cancel"
+                            BackgroundColor="White"
+                            TextColor="#212529"
+                            BorderColor="#CCCCCC"
+                            BorderWidth="1"
+                            CornerRadius="6"
+                            HeightRequest="48"
+                            Clicked="Cancel_Clicked"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentView>
